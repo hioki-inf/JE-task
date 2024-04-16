@@ -5,26 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+5.times do |n|
+    User.create!(
+        name: "User #{n + 1}",
+        email: "#{n + 1}@mail.com",
+        introduction: 'word ' * (n + 1),
+        password: 'aaaaaa'
+    )
+    
+    Book.create!(
+        title: "test title #{n + 1}",
+        body: "test body #{n + 1}",
+        user_id: n % 2 + 1
+        )
+end
+
 User.create!(
-    name: "メンター太郎",
+    name: "mentor",
     email: "a@a",
     password: "aaaaaa"
 )
 
-5.times do |n|
-    User.create!(
-        name: Faker::Name.first_name,
-        email: Faker::Internet.email,
-        introduction: Faker::Lorem.characters(number: 20),
-        password: Faker::Lorem.characters(number: 10)
-    )
-    
-    Book.create!(
-        title: Faker::Book.title,
-        body: "ランダム#{Faker::Lorem.characters(number: 5)}",
-        user_id: 1
-        )
-end
 Favorite.create!(
     user_id: 1,
     book_id: 1,
