@@ -17,6 +17,13 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
+          <td>
+            <% @book.tag_list.each do |tag|%>
+              <div class="btn btn-primary">
+                <%= tag %>
+              </div>
+            <% end %>
+          </td>
           <td>コメント数: <%= @book.book_comments.count %></td>
           <td><%= render "favorites/btn", book: @book %></td>
           <% if @book.user == current_user %>
