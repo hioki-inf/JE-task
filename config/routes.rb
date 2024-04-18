@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index,:show,:edit,:update]
   
+  post "searches/search"=>"searches#search", as: :search
+  
   # develop
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

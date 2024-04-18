@@ -21,6 +21,13 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li>
+                <h4>ワード検索</h4>
+                <%= search_form_for @q, url: search_path, method: :post do |f| %>
+                  <%= f.text_field :title_or_user_name_cont, placeholder: 'titleまたは投稿者の名前に含む' %>
+                  <%= f.submit '検索' %>
+                <% end %>
+              </li>
+              <li>
                 <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
                   <i class="fas fa-home"></i> Home
                 <% end %>
