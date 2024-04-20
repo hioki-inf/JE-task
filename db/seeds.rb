@@ -12,7 +12,9 @@
         introduction: 'word ' * (n + 1),
         password: 'aaaaaa'
     )
-    user.profile_image.attach(io: File.open(Rails.root.join("app/assets/images/icon#{n+1}.jpg")), filename: "icon#{n+1}") if n < 2
+    if n < 2
+        user.profile_image.attach(io: File.open(Rails.root.join("app/assets/images/icon#{n+1}.jpg")), filename: "icon#{n+1}")
+    end
     
     Book.create!(
         title: "test title #{n + 1}",
