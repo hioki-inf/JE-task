@@ -18,3 +18,8 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+alert('a');
+console.log('a');
+const file1 = document.getElementById("file1").files[0];
+console.log(file1);

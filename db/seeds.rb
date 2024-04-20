@@ -6,12 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 5.times do |n|
-    User.create!(
+    user = User.create!(
         name: "User #{n + 1}",
         email: "#{n + 1}@mail.com",
         introduction: 'word ' * (n + 1),
         password: 'aaaaaa'
     )
+    user.profile_image.attach(io: File.open(Rails.root.join("app/assets/images/icon#{n+1}.jpg")), filename: "icon#{n+1}") if n < 2
     
     Book.create!(
         title: "test title #{n + 1}",
