@@ -20,6 +20,15 @@ class User < ApplicationRecord
     ["books"]
   end
   
+  def self.lastest_images(num=3)
+    result = []
+    order(updated_at: :desc).each do |user|
+      result << user.profile_image if user.profile_image.attached?
+      break if result.length >= num
+    end
+    result
+  end
+  
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end

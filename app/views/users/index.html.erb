@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'slide_show', 'data-turbolinks-track': 'reload' %>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
@@ -9,6 +10,14 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Users</h2>
       <%= render 'index',users: @users %>
+      <div class='slide-show-container'>
+        <h4>New Profiles</h4>
+        <div class=slide-show>
+          <% User.lastest_images.each do |image| %>
+            <div><%= image_tag image, size:'100x100', class: 'm-auto' %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -8,7 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
-import "slick"
+import 'slick-carousel'
+
 import "popper.js"
 import "bootstrap"
 
@@ -18,8 +19,3 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-alert('a');
-console.log('a');
-const file1 = document.getElementById("file1").files[0];
-console.log(file1);
