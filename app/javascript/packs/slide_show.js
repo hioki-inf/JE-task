@@ -6,7 +6,6 @@ $(function() {
     $('.slide-show').slick();
 });
 
-
 // デバッグ用
   // console.log($);
   // console.log($.fn.slick);

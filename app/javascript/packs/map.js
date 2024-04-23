@@ -13,7 +13,6 @@ async function initMap() {
 
   map = new Map(document.getElementById("map"), {
     center: { lat: 35.65958547, lng: 139.69872498 },
-    // 196921, 767623
     zoom: 16,
   });
 }
@@ -34,22 +33,14 @@ $(window).ready(function() {
 
 // 入力した住所の位置を表示
 $(document).on('click', "#map-jump", function() {
-  // function codeAddress() {
-    let geocoder = new google.maps.Geocoder();
-    let address = $('.jump-target').toArray().reduce((acc, curr) => acc + curr.value, '');
-    
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        // var marker = new google.maps.Marker({
-        //     map: map,
-        //     position: results[0].geometry.location
-        // });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  // }
+  let geocoder = new google.maps.Geocoder();
+  let address = $('.jump-target').toArray().reduce((acc, curr) => acc + curr.value, '');
+  
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
 });
-
-console.log('test');
