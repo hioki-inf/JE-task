@@ -12,38 +12,44 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
   map = new Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    center: { lat: 35.65958547, lng: 139.69872498 },
+    // 196921, 767623
+    zoom: 16,
   });
 }
 initMap();
 
-// 住所
-$(document).on('click', "#jpostal-trigger", function() {
-  console.log('click');
-  console.log($('#postcode'));
-  console.log(
-    $('#postcode').jpostal(
-      {
-      postcode : ['#postcode'],
-      address : {
-        '#prefectures'  : '%3'
-      }
-    })
-  );
-  
+// 郵便番号から住所入力
+$(window).ready(function() {
   $('#postcode').jpostal(
     {
     postcode : ['#postcode'],
     address : {
-      '#prefectures'  : '%3'
-      // '#address2'  : '%4',
-      // '#address3'  : '%5',
-      // '#address1_kana'  : '%8',
-      // '#address2_kana'  : '%9',
-      // '#address3_kana'  : '%10'
+      '#prefectures'  : '%3',
+      '#address1'  : '%4',
+      '#address2'  : '%5%6%7'
     }
   });
+});
+
+// 入力した住所の位置を表示
+$(document).on('click', "#map-jump", function() {
+  // function codeAddress() {
+    let geocoder = new google.maps.Geocoder();
+    let address = $('.jump-target').toArray().reduce((acc, curr) => acc + curr.value, '');
+    
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        // var marker = new google.maps.Marker({
+        //     map: map,
+        //     position: results[0].geometry.location
+        // });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  // }
 });
 
 console.log('test');
