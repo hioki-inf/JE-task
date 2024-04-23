@@ -70,3 +70,4 @@ gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ransack'
+gem 'jp_prefecture'

@@ -110,6 +110,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jp_prefecture (1.1.1)
     launchy (3.0.0)
       addressable (~> 2.8)
       childprocess (~> 5.0)
@@ -279,6 +280,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   jbuilder (~> 2.7)
+  jp_prefecture
   letter_opener_web
   listen (~> 3.3)
   mysql2

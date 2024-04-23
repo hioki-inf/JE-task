@@ -10,6 +10,7 @@
     "bootstrap": "4.6.2",
     "dotenv": "^16.4.5",
     "jquery": "^3.7.1",
+    "jquery-jpostal-ja": "^2.14.45",
     "popper.js": "^1.16.1",
     "slick-carousel": "^1.8.1",
     "turbolinks": "^5.2.0",
