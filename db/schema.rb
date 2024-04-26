@@ -110,5 +110,4 @@ ActiveRecord::Schema.define(version: 2024_04_17_103714) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "taggings", "tags"
 end
