@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title"]
+    ["title", "user_id"]
   end
   
   def self.ransackable_associations(auth_object = nil)
@@ -18,6 +18,6 @@ class Book < ApplicationRecord
   
   
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.any?{|f| f.user_id == user.id}
   end
 end

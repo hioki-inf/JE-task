@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <%= render "books/index",books: @books %>
+      <%= render "books/index",books: @books, show_user_id: @user.id %>
       <div>
         <h4>住所入力</h4>
           <div class="form-group row">

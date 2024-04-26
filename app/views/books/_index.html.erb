@@ -1,3 +1,27 @@
+<div>
+  <h4>ワード検索</h4>
+  <%= search_form_for @q, url: search_path, method: :post do |f| %>
+    <%= f.search_field :title_cont, placeholder: 'title' %>
+    <% if defined?(show_user_id) %>
+      <%= f.hidden_field :user_id_eq, value: show_user_id %>
+    <% else %>
+      <%= f.search_field :user_name_cont, placeholder: 'user name' %>
+    <% end %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+<div>
+  <h4>タグ検索</h4>
+  <%= form_with url: search_path, method: :post do |f| %>
+    <%= f.hidden_field :search_type, value: 'tag' %>
+    <% if defined?(show_user_id) %>
+      <%= f.hidden_field :user_id, value: show_user_id %>
+    <% end %>
+    <%= f.search_field :tag, placeholder: ',区切りで入力してください' %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -18,13 +42,13 @@
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
         <td>
-          <% book.tag_list.each do |tag|%>
+          <% book.tags.each do |tag|%>
             <div class="btn btn-primary">
-              <%= tag %>
+              <%= tag.name %>
             </div>
           <% end %>
         </td>
-        <td>コメント数: <%= book.book_comments.count %></td>
+        <td>コメント数: <%= book.book_comments.size %></td>
         <td class='favo-btn-<%= book.id %>'><%= render "favorites/btn", book: book %></td>
       </tr>
     <% end %>

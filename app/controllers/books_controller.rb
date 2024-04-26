@@ -7,8 +7,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
     @book = Book.new
+    set_books
   end
 
   def create
@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
-      @books = Book.all
+      set_books
       render 'index'
     end
   end
@@ -49,5 +49,9 @@ class BooksController < ApplicationController
     unless @book.user == current_user
       redirect_to books_path
     end
+  end
+  
+  def set_books
+    @books = Book.eager_load(:user, :favorites, :book_comments, :tags)
   end
 end
